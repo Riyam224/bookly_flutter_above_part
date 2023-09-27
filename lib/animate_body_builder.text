@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:livree/core/utils/assets.dart';
+
+class SplashViewBody extends StatefulWidget {
+  const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  // todo animation
+  late AnimationController animationController;
+  late Animation<Offset> slidingAnimation;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(minutes: 1),
+    );
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(animationController);
+    animationController.forward();
+   
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Image.asset(AssetsData.logo),
+        const SizedBox(
+          height: 6,
+        ),
+        AnimatedBuilder(
+            animation: slidingAnimation,
+            builder: (context, _) {
+              return SlideTransition(
+                position: slidingAnimation,
+                child: const Text(
+                  'Read Free Books',
+                  textAlign: TextAlign.center,
+                ),
+              );
+            }),
+      ],
+    );
+  }
+}
