@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:livree/features/home/presentation/views/widgets/custom_list_view_item.dart';
+import 'package:livree/features/home/presentation/views/widgets/featured_list_view_item.dart';
 
 class FeaturedBookListView extends StatelessWidget {
   const FeaturedBookListView({super.key});
@@ -14,7 +14,7 @@ class FeaturedBookListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return const  Padding(
               padding:  EdgeInsets.symmetric(horizontal: 9),
-              child:  CustomListViewItem(),
+              child:  FeaturedListViewItem(),
             );
           }),
     );
